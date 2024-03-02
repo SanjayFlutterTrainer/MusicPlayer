@@ -37,7 +37,7 @@ class PlaylistProvider extends ChangeNotifier {
   void play() async {
     String path = _playlist[_currentSongIndex!].audioPath;
     await _audioplayer.stop();
-    await _audioplayer.play(AssetSource(path));
+    await _audioplayer.play(AssetSource('audio/1 Chor.mp3'));
     _isPlaying = true;
     notifyListeners();
   }
@@ -84,6 +84,7 @@ class PlaylistProvider extends ChangeNotifier {
 // play previous
   void playprevious() async {
     if (_currentDuration.inSeconds > 2) {
+      seek(Duration.zero);
     } else {
       if (currentSongIndex! > 0) {
         currentSongIndex = _currentSongIndex! - 1;
